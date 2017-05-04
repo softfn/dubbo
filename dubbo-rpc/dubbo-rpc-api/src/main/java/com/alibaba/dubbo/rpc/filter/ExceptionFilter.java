@@ -23,13 +23,7 @@ import com.alibaba.dubbo.common.logger.Logger;
 import com.alibaba.dubbo.common.logger.LoggerFactory;
 import com.alibaba.dubbo.common.utils.ReflectUtils;
 import com.alibaba.dubbo.common.utils.StringUtils;
-import com.alibaba.dubbo.rpc.Filter;
-import com.alibaba.dubbo.rpc.Invocation;
-import com.alibaba.dubbo.rpc.Invoker;
-import com.alibaba.dubbo.rpc.Result;
-import com.alibaba.dubbo.rpc.RpcContext;
-import com.alibaba.dubbo.rpc.RpcException;
-import com.alibaba.dubbo.rpc.RpcResult;
+import com.alibaba.dubbo.rpc.*;
 import com.alibaba.dubbo.rpc.service.GenericService;
 
 /**
@@ -102,6 +96,15 @@ public class ExceptionFilter implements Filter {
                     // 是Dubbo本身的异常，直接抛出
                     if (exception instanceof RpcException) {
                         return result;
+                    }
+                    // 是InvokeException异常，封装后抛给客户端
+                    if (exception instanceof InvokeException) {
+                        InvokeException invokeException = (InvokeException) exception;
+                        String message = invokeException.getMessage();
+                        Status status = invokeException.getStatus();
+                        if (!StringUtils.isEmpty(message))
+                            status = new InvokeStatus(status.code(), message);
+                        return new RpcResult(new InvokeException(status, StringUtils.toString(exception)));
                     }
 
                     // 否则，包装成RuntimeException抛给客户端

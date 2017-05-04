@@ -154,6 +154,9 @@ public class ConfigUtils {
                     }
                     PROPERTIES = ConfigUtils.loadProperties(path, false, true);
                 }
+                if (PROPERTIES == null || PROPERTIES.keySet().size() == 0) {
+                    PROPERTIES = ConfigUtils.loadProperties(Constants.DEFAULT_CONFIG_DUBBO_PROPERTIES, false, true);
+                }
             }
         }
         return PROPERTIES;

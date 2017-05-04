@@ -63,6 +63,8 @@ public class Constants {
 
     public static final String  DEFAULT_DUBBO_PROPERTIES           = "dubbo.properties";
 
+    public static final String DEFAULT_CONFIG_DUBBO_PROPERTIES     = "config/dubbo.properties";
+
     public static final String  SENT_KEY                           = "sent";
 
     public static final boolean DEFAULT_SENT                       = false;
