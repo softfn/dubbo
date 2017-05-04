@@ -477,4 +477,10 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+		<repository>
+			<id>mvn-repo</id>
+			<url>file:../../mvn-repo/repository/</url>
+		</repository>
+	</distributionManagement>
 </project>
