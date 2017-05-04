@@ -5,7 +5,7 @@ package com.alibaba.dubbo.rpc;
  * InvokeException
  * <p/>
  *
- * @author wenbing.zhang@midea.com
+ * @author softfn
  */
 public class InvokeException extends RuntimeException {
     /**

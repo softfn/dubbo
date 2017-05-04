@@ -5,7 +5,7 @@ package com.alibaba.dubbo.rpc;
  * InvokeStatus
  * <p/>
  *
- * @author wenbing.zhang@midea.com
+ * @author softfn
  */
 public class InvokeStatus implements Status {
     private int code;

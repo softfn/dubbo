@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Status
  * <p/>
  *
- * @author wenbing.zhang@midea.com
+ * @author softfn
  */
 public interface Status extends Serializable {
     /**
